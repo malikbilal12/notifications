@@ -11,6 +11,7 @@ export class UserService {
   id?: string;
   name?: string;
   currentMessage= new BehaviorSubject<any>(null)
+  token= new BehaviorSubject<any>(null)
   constructor(
     private angularFireMessaging: AngularFireMessaging,
     private firestore: AngularFirestore
@@ -21,6 +22,7 @@ export class UserService {
     this.angularFireMessaging.requestToken.subscribe(
       (token) => {
         console.log("FCM token received: ", token);
+        this.token.next(token)
       },
       (error) => {
         console.error("Unable to get permission to notify.", error);
