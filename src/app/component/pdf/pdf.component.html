@@ -1,0 +1,26 @@
+
+
+<!-- <ngx-extended-pdf-viewer
+[src]="'assets/test.pdf'"
+[height]="'auto'"
+[showHandToolButton]="true"
+[textLayer]="true"
+
+></ngx-extended-pdf-viewer> -->
+
+<div>
+  <h1>Select PDF file and Signature</h1>
+  <div >
+    <button class="btn btn-primary" (click)="fileInput.click()" >Choose File</button>
+    <input hidden (change)="onFileSelected($event)" #fileInput type="file" />
+    <span>{{selectedFile?.name}}</span>
+  </div>
+  <div class="p-5 ">
+    <ngx-extended-pdf-viewer
+    [base64Src]="selectedFileB64"
+    [height]="'90vh'"
+    [textLayer]="true"
+    *ngIf="selectedFileB64"
+    ></ngx-extended-pdf-viewer>
+  </div>
+</div>
